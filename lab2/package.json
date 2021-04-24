@@ -1,0 +1,29 @@
+{
+  "name": "lab2",
+  "version": "0.0.5",
+  "description": "Rest api for meetup. It's sso hard",
+  "main": "server_app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server_app.js",
+    "dev": "nodemon server_app.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "nodejs",
+    "rest"
+  ],
+  "author": "Stepanov Gleb",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+
+}
