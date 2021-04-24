@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> </link>
+    <title>REST API </title>
+    <style>
+        [v-cloak] {display: none}
+    </style>
+</head>
+<body>
+
+<div class = "container pt - 3" id ="app" v-cloak>
+    <h1> Лабораторная 2 (TIMEPAD)  Степанов Глеб</h1>
+    <h4> После ввода даты необходимо 2 раза нажать на кнопку отправить, я так и не смог понять почему этот баг присутствует </h4>
+    <form class="form-inline mb-3" @submit.prevent="createDate">
+        <div class="form-group row " >
+            <label for="date_input_start" class="col-2 col-form-label">Дата и время начала</label>
+            <div class="col-10">
+                <input class="form-control" type="datetime-local" value="2021-01-01T01:00:00" id="date_input_start" v-model="form.date_input_start" >
+            </div>
+
+            <label for="date_input_end" class="col-2 col-form-label">Дата и время завершения</label>
+            <div class="col-10">
+                <input class="form-control" type="datetime-local" value="2021-01-02T01:00:00" id="date_input_end" v-model="form.date_input_end">
+                <input class="form-control" type="text" placeholder="Название города (на русском с большой буквы)" v-model="form.city">
+            </div>
+        </div>
+        <button class = "btn btn-primary" type ="submit" :disabled= "!canCreate"> Отправить запрос </button>
+    </form>
+
+    <div>
+        <div v-if="loading">
+         <loader />
+     </div>
+
+      <div v-else-if="cards.length">
+                <li v-for="card in cards">
+                    <img class="card-img-top" style="width: 450px; height: 250px" :src="card.image_link" >
+                    <div class="card-body" style="width: 450px; height: 270px">
+                        <a :href="card.url" class="card-title">{{card.name}} </a>
+                    </div>
+                </li>
+
+      </div>
+
+        <p v-else> Карточек пока нет</p>
+
+    </div>
+
+
+ <!-- VUE как модуль -->
+<script type = "module" src = "Frontend.js"></script>
+</body>
+</html>
